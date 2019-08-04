@@ -3,6 +3,7 @@ package com.handdigitclf;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.bamlab.rnimageresizer.ImageResizerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.reactlibrary.TfliteReactNativePackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ImageResizerPackage(),
             new VectorIconsPackage(),
             new RNCameraPackage(),
             new TfliteReactNativePackage()

@@ -59,6 +59,7 @@
 		C4DD95FB28DD4D5092403822 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AD445A3D7B24FACA09FB8D4 /* Octicons.ttf */; };
 		AC4C80B9B6A245038CE121FD /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45FD095709E84CD99F568246 /* SimpleLineIcons.ttf */; };
 		8E405897D738474E8CBA9301 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4E6397027E74961840E58FC /* Zocial.ttf */; };
+		3D7FE780240F49909B505C50 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCE5E2AA31B443299A8AE84 /* libRCTImageResizer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +390,8 @@
 		5AD445A3D7B24FACA09FB8D4 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		45FD095709E84CD99F568246 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		A4E6397027E74961840E58FC /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DA84E5D7336E42369BB1EC48 /* RCTImageResizer.xcodeproj */ = {isa = PBXFileReference; name = "RCTImageResizer.xcodeproj"; path = "../node_modules/react-native-image-resizer/ios/RCTImageResizer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		9FCE5E2AA31B443299A8AE84 /* libRCTImageResizer.a */ = {isa = PBXFileReference; name = "libRCTImageResizer.a"; path = "libRCTImageResizer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +423,7 @@
 				501F9644719E4D3FB38098BA /* libTfliteReactNative.a in Frameworks */,
 				A23DEC18E0844AE8ABD2F0D0 /* libRNCamera.a in Frameworks */,
 				779C2E71CA9F4D03BEFC4BCB /* libRNVectorIcons.a in Frameworks */,
+				3D7FE780240F49909B505C50 /* libRCTImageResizer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +617,7 @@
 				342D70C5874B457B85DDA878 /* TfliteReactNative.xcodeproj */,
 				72F8831A71EB4F6DBBABBA20 /* RNCamera.xcodeproj */,
 				CA34A2AD317A4E7FAF60B5DC /* RNVectorIcons.xcodeproj */,
+				DA84E5D7336E42369BB1EC48 /* RCTImageResizer.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1284,12 +1289,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Debug;
@@ -1314,12 +1321,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Release;
@@ -1345,6 +1354,7 @@
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Debug;
@@ -1369,6 +1379,7 @@
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Release;
@@ -1401,12 +1412,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Debug;
@@ -1439,12 +1452,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Release;
@@ -1476,12 +1491,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Debug;
@@ -1513,12 +1530,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/tflite-react-native/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 				);
 			};
 			name = Release;

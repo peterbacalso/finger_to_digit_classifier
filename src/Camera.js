@@ -7,9 +7,9 @@ export default class Camera extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      const options = { width: 299, height: 299, quality: 0.5, base64: true };
+      // const options = { width: 299, height: 299, quality: 0.5, base64: true };
+      const options = { skipProcessing: true };
       const data = await this.camera.takePictureAsync(options);
-      console.warn(data)
       await this.props.setURI(data.uri);
     }
   };
