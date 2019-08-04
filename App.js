@@ -102,7 +102,7 @@ export default class App extends Component {
               ? <Text style={styles.output}>Label: {label}</Text> : null }
           { !isProcessing && confidence 
               ? <Text style={styles.output}>Confidence: {confidence} %</Text> : null }
-          { isProcessing && label 
+          { isProcessing || label 
               ? null : <Text style={styles.instructions}>Open the camera and snap a picture of your hand to find out how many fingers are up</Text> }
         </View>
         <View style={styles.camera}>
