@@ -2,8 +2,18 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import MovableView from 'react-native-movable-view'
+import IconFA from 'react-native-vector-icons/FontAwesome';
 
 export default class Camera extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      pressTimeStamp: null
+    };
+    this.takePicture = this.takePicture.bind(this);
+  }
 
   takePicture = async function() {
     if (this.camera) {
@@ -27,10 +37,18 @@ export default class Camera extends Component {
           permissionDialogTitle={'Permission to use camera'}
           permissionDialogMessage={'We need your permission to use your camera phone'}
         />
-        <View style={styles.captureContainer}>
-          <TouchableOpacity onPress={this.takePicture.bind(this)} style={styles.capture}>
-            <Text style={{ color:"white", fontSize:30 }}>SNAP</Text>
-          </TouchableOpacity>
+        <View style={{position: 'absolute', left: 200, top: 200}}>
+          <MovableView 
+          onDragStart={() => {
+            this.setState({ pressTimeStamp: new Date() })
+          }} 
+          onDragEnd={() => {
+            let now = new Date()
+            let duration = now - this.state.pressTimeStamp
+            if (duration < 200) this.takePicture()
+          }}>
+              <IconFA name="camera" style={{ color:"white", fontSize:60 }}/>
+          </MovableView>
         </View>
       </View>
     );
@@ -40,26 +58,10 @@ export default class Camera extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
   },
   preview: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-  },
-  captureContainer: { 
-    flex: 0, 
-    flexDirection: 'row', 
-    justifyContent: 'center' 
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: 'rgba(0,0,0,0)',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20,
   },
 });

@@ -116,8 +116,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   header: {
@@ -152,7 +150,7 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   outputContainer: {
-    flex: 4,
+    flex: 3,
     alignItems: 'center'
   },
   output: {
@@ -165,6 +163,6 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   camera: {
-    flex: 5
+    flex: 6
   }
 });
