@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableOpacity, Alert, ActivityIndicator} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableOpacity, 
+        Alert, ActivityIndicator, Picker} from 'react-native';
 import IconF from 'react-native-vector-icons/Feather';
 import IconEI from 'react-native-vector-icons/EvilIcons';
 import Tflite from 'tflite-react-native';
@@ -16,6 +17,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       cameraOpen: false,
+      model: null,
       label: null,
       confidence: null,
       isProcessing: false
@@ -24,16 +26,18 @@ export default class App extends Component {
   }
 
   componentWillMount() {
+    let model = 'xception'
+    this.setState({ model }, () => this.loadModel(model))
+  }
+
+  loadModel(model) {
     tflite.loadModel({
-      model: 'models/hand_to_digit.tflite',
-      labels: 'models/hand_to_digit.txt',
+      model: `models/${model}.tflite`,
+      labels: 'models/labels.txt',
       numThreads: 1, 
     },
     (err, res) => {
-      if(err)
-        Alert.alert('Error: Unable to load inference model')
-      // else
-      //   console.warn(res);
+      if(err) Alert.alert('Error: Unable to load inference model')
     });
   }
 
@@ -67,7 +71,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { cameraOpen, label, confidence, isProcessing } = this.state
+    const { cameraOpen, model, label, confidence, isProcessing } = this.state
 
     return (
       <View style={styles.container}>
@@ -75,17 +79,18 @@ export default class App extends Component {
           <Text style={styles.headerTitle}>HOW MANY FINGERS?</Text>
         </View>
         <View style={styles.optionsContainer}>
-          {label 
-          ? <View style={styles.clear}>
-            <TouchableOpacity 
-              style={{flexDirection:'row', marginLeft: 20}}
-              onPress={() => this.setState({ label: null, confidence: null })}>
-              <IconEI 
-                name='close'
-                style={styles.optionsIcon} />
-              <Text style={{fontSize: 18}}>CLEAR</Text>
-            </TouchableOpacity>
-          </View> : null}
+          <View style={styles.picker}>
+            <Picker
+              selectedValue={model}
+              style={{height: '100%', width: '100%'}}
+              onValueChange={(model, itemIndex) =>
+                this.setState({ model }, () => this.loadModel(model))
+              }>
+              <Picker.Item label="MobileNet (Medium Accuracy)" value="mobilenet" />
+              <Picker.Item label="MobileNet Quant (Fastest Predict-Low Accuracy)" value="mobilenet-quant" />
+              <Picker.Item label="Xception (Slow Predict-High Accuracy)" value="xception" />
+            </Picker>
+          </View>
           <View style={styles.options}>
             <TouchableOpacity 
               style={{ marginRight: 20 }}
@@ -104,6 +109,17 @@ export default class App extends Component {
               ? <Text style={styles.output}>Confidence: {confidence} %</Text> : null }
           { isProcessing || label 
               ? null : <Text style={styles.instructions}>Open the camera and snap a picture of your hand to find out how many fingers are up</Text> }
+          {label 
+          ? <View style={styles.clear}>
+            <TouchableOpacity 
+              style={{flexDirection:'row'}}
+              onPress={() => this.setState({ label: null, confidence: null })}>
+              <IconEI 
+                name='close'
+                style={styles.optionsIcon} />
+              <Text style={{fontSize: 18}}>CLEAR</Text>
+            </TouchableOpacity>
+          </View> : null}
         </View>
         <View style={styles.camera}>
           { cameraOpen ? <Camera setURI={this.evaluateImage} /> : null }
@@ -137,9 +153,14 @@ const styles = StyleSheet.create({
     borderBottomColor: "#666666"
   },
   clear: {
-    flex: 1,
+    marginTop: 10,
     alignItems: 'flex-start',
     justifyContent: 'center',
+  },
+  picker: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   options: {
     flex: 1,
