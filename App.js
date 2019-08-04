@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
 import IconF from 'react-native-vector-icons/Feather';
 import Tflite from 'tflite-react-native';
+import RNFS from 'react-native-fs';
 
 import Camera from './src/Camera';
 
@@ -17,7 +18,6 @@ export default class App extends Component {
       confidence: null
     };
     this.evaluateImage = this.evaluateImage.bind(this);
-    // this.tflite = new Tflite();
   }
 
   componentWillMount() {
@@ -35,11 +35,12 @@ export default class App extends Component {
   }
 
   evaluateImage(uri) { 
+
     tflite.runModelOnImage({
       path: uri,
-      imageMean: 0,
-      imageStd: 1,
-      numResults: 3,
+      imageMean: 127.5,
+      imageStd: 127.5,
+      numResults: 1,
       threshold: 0.05
     },
     (err, res) => {
@@ -48,9 +49,11 @@ export default class App extends Component {
         Alert.alert('Error: Unable to evaluating image')
       }
       else {
-        console.warn('model output', res);
-        // const { label, confidence } = res
-        // this.setState({ label, confidence })
+        const { label, confidence } = res[0]
+        this.setState({ 
+          label: label.toUpperCase(), 
+          confidence: parseFloat(confidence).toFixed(2)*100
+        })
       }
     });
   }
@@ -75,7 +78,7 @@ export default class App extends Component {
         </View>
         <View style={styles.outputContainer}>
           { label ? <Text style={styles.output}>Label: {label}</Text> : null }
-          { confidence ? <Text style={styles.output}>Confidence: {confidence}</Text> : null }
+          { confidence ? <Text style={styles.output}>Confidence: {confidence} %</Text> : null }
           { label ? null : <Text style={styles.instructions}>Snap a picture of your hand to convert it to a digit</Text> }
         </View>
         <View style={styles.camera}>
