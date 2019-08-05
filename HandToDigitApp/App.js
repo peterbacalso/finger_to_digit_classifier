@@ -86,9 +86,8 @@ export default class App extends Component {
               onValueChange={(model, itemIndex) =>
                 this.setState({ model }, () => this.loadModel(model))
               }>
-              <Picker.Item label="MobileNet (Medium Accuracy)" value="mobilenet" />
-              <Picker.Item label="MobileNet Quant (Fastest Predict-Low Accuracy)" value="mobilenet-quant" />
-              <Picker.Item label="Xception (Slow Predict-High Accuracy)" value="xception" />
+              <Picker.Item label="MobileNet (Fast Predict, Medium Accuracy)" value="mobilenet" />
+              <Picker.Item label="Xception (Slow Predict, High Accuracy)" value="xception" />
             </Picker>
           </View>
           <View style={styles.options}>
