@@ -103,12 +103,12 @@ When it comes to accuracy on the test data Xception performs only marginaly high
 
 ## Conclusion
 
-This was quite a fun project to do and despite the simplicity of the concept, I encountered many bumps on the road. Gathering data and making it as representative as possible was tedious but very important; tuning the hyperparameters while making sure I avoid "*torturing the data till it confesses*"" was non-trivial; and deploying the model to the app was not smooth sailing. However it was definitely worth it since I learned a lot through this project and I recommend you try something like this on your own.
+This was quite a fun project to do and despite the simplicity of the concept, I encountered many bumps on the road. Gathering data and making it as representative as possible was tedious but very important; tuning the hyperparameters while making sure I avoid "*torturing the data till it confesses*" was non-trivial; and deploying the model to the app was not smooth sailing. However it was definitely worth it since I learned a lot through this project and I recommend you try something like this on your own.
 
 There is still room for improvement in terms of fine-tuning the models. As shown in the validation accuracy for Xception above, the model is still overfitting to the training data and the same applies to MobileNet. One way I can surely reduce overfitting is to gather more data but I would like to explore other alternatives before that. Aside from that, here are a few points that I would like to address:
 
 * Reduce size of the model
-	* I tried creating a quantized version with 8-bit precision and it reduces Xception accuracy by about 10% but renders MobileNet unusable
+	* I tried creating a quantized version with 8-bit precision and it reduces Xception accuracy by about 8% but renders MobileNet unusable
 	* Try floating point 16
 	* Pretrained models are large - Try creating a custom model
 * Increase Accuracy
