@@ -43,7 +43,7 @@ I initially collected 120 pictures per state of my own hand totalling 600 pictur
 
 The dataset is loaded into memory using [Tensorflow's Data API](https://www.tensorflow.org/tutorials/load_data/images). This creates a dataset generator that lets you easily apply processing functions and data augmentation. 
 
-The images were divided into a 80/20 train/test split, scaled to 299x299, and standardized as per each models's `preprocess_input` function. The training split was augmented using horizontal and vertical flips, 40 degree rotations, and brightness fluctuations.
+The images were divided into a 80/20 train/test split, scaled to 299x299, and standardized as per each models's `preprocess_input` function. The training split was augmented using horizontal/vertical flips, and brightness fluctuations.
 
 For both Xception and Mobilenet, majority of the bottom layers were frozen but a portion of the top layers were left trainable. In order to prevent overfitting, a number of regularization hyperparameters were applied. Namely dropout, L1, and L2 were added to the ouput layer, a small batch size of 10 was passed per iteration and finally since the dataset is small, cross-validation was implemented using random seed over 5 folds.
 
