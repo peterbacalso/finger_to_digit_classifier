@@ -16,7 +16,7 @@ The hand to digit classifier takes as input an image of your hand with 5 states,
 
 To create the deep learning model, I used [Keras](https://keras.io) which is a high-level deep learning library that has been integrated into [Tensorflow](https://www.tensorflow.org/). The API comes with pretrained models and offers enough flexibility to make all sorts of neural networks.
 
-For completeness, I deployed the model in a [mobile app](www.google.ca) created with [React Native](https://facebook.github.io/react-native/docs/getting-started).
+For completeness, I deployed the model in a [mobile app](https://github.com/peterbacalso/HandToDigitClassifier/tree/master/HandToDigitApp) created with [React Native](https://facebook.github.io/react-native/docs/getting-started).
 
 #### Apparatus
 
@@ -28,7 +28,7 @@ Model Training
 * Anaconda Python with Jupyter Notebook
 
 Data Collection
-* Samsung Galaxy S9
+* Samsung Galaxy S9 (For taking pictures)
 * Fatkun Batch Download Image Chrome Extension
 
 #### Model Design
@@ -37,7 +37,7 @@ I tried two different pretrained models for this project, one is [Xception](http
 
 #### Data
 
-I initially collected 120 pictures per state of my own hand totalling 600 pictures. Although I used transfer learning which allows neural network training with little data, this is not enough data to create a model that generalizes well, plus it runs the risk of overfitting to my own hand. To counter this I batch downloaded images from google and on top of that, added 218 more images per state from a subest of the [sign language digits dataset](https://www.kaggle.com/ardamavi/sign-language-digits-dataset) with reconfigured labels. All in all I ended up with x pictures per state, totalling x pictures.
+I initially collected 120 pictures per state of my own hand totalling 600 pictures. Although I used transfer learning which allows neural network training with little data, this is not enough data to create a model that generalizes well, plus it runs the risk of overfitting to my own hand. To counter this I batch downloaded images from google and on top of that, added 218 more images per state from a subest of the [sign language digits dataset](https://www.kaggle.com/ardamavi/sign-language-digits-dataset) with reconfigured labels. All in all I ended up with 562 pictures per state, totalling 2810 pictures.
 
 #### Procedure
 
@@ -50,5 +50,57 @@ For both Xception and Mobilenet, majority of the bottom layers were frozen but a
 See [ipynb](ipynb) for more implementation details.
 
 ## Results
+
+**MobileNet**
+* 93.8% Top-1 Accuracy
+
+* Precision and Recall
+
+	Label | Recall | Precision
+	--- | --- | ---
+	five | 0.9298 | 0.9725
+	four | 0.8947 | 0.9358
+	three | 0.9828 | 0.8636
+	two | 0.9027 | 0.9714
+	one | 0.9823 | 0.9652
+
+* Confusion Matrix
+
+	*Note that labels are in alphabetical order*
+
+	<img src="https://github.com/peterbacalso/HandToDigitClassifier/blob/master/assets/confusion_matrix_mobilenet.png" width="600" height="600" />
+
+**Xception**
+* 95% Top-1 Accuracy
+
+* Precision and Recall
+
+	Label | Recall | Precision
+	--- | --- | ---
+	five | 0.9298 | 0.9725
+	four | 0.8947 | 0.9358
+	three | 0.9569 | 0.9250
+	two | 0.9735 | 0.9402
+	one | 1.0000 | 0.9826
+
+* Confusion Matrix
+
+	*Note that labels are in alphabetical order*
+
+	<img src="https://github.com/peterbacalso/HandToDigitClassifier/blob/master/assets/confusion_matrix_mobilenet.png" width="600" height="600" />
+
+* Validation Loss and Validation Accuracy For Best Model
+
+	![](https://github.com/peterbacalso/HandToDigitClassifier/blob/master/assets/acc_loss.png)
+
+* All Models in 5-Fold Validation Loss and Validation Accuracy
+
+	![](https://github.com/peterbacalso/HandToDigitClassifier/blob/master/assets/all_folds_acc_loss.png)
+
 ## Analysis
+
+When it comes to accuracy on the test data Xception performs only marginaly higher than MobileNet. However when testing in real scenarios, it seems that Xception generalizes better as it is more invariant to changes in background and lighting.
+
 ## Conclusion
+
+TODO: add next steps, how to improve model, etc.
