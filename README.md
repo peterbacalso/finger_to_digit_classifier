@@ -8,7 +8,7 @@ Neural Networks are amazing. They have lead to innovations in areas such as spee
 
 The hand to digit classifier takes as input an image of your hand with 5 states, each representing the numbers 1-5, and outputs the actual numeric value.
 
-TODO: Add 1 sample image for each state with corresponding numeric value 
+![App Demo](https://media.giphy.com/media/lqND3IemQzBrnU8vdC/giphy.gif)
 
 ## Methodology
 
