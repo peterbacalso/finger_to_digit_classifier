@@ -10,18 +10,15 @@ Run the following from the root directory in the terminal
 
 ```shell
 npm install
-react-native link
 ```
-For iOS, you can either run the project in Xcode or run the emulator from the terminal:
 
-```shell
-react-native run-ios
-```
 For Android, you can either run the project in Android Studio or run on a connected android device from the terminal:
 
 ```shell
 react-native run-android
 ```
+
+iOS is not currently supported
 
 
 
